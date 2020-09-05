@@ -26,7 +26,8 @@ source-repository head
 
 library
   exposed-modules:
-      KMeans
+      KMeans,
+      Lenses
   other-modules:
       Paths_chapter6
   hs-source-dirs:
