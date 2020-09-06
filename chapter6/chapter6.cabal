@@ -27,7 +27,8 @@ source-repository head
 library
   exposed-modules:
       KMeans,
-      Lenses
+      Lenses,
+      MyWriter
   other-modules:
       Paths_chapter6
   hs-source-dirs:
