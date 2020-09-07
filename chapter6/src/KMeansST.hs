@@ -5,6 +5,8 @@ module KMeans where
 
 import           Data.List
 import qualified Data.Map                      as M
+import           Control.Monad.ST
+import           Data.STRef
 
 
 class Ord v => Vector v where
@@ -33,17 +35,31 @@ kMeans
   -> [e]                  -- the information
   -> Double               -- threshold
   -> (Int, [v])           -- final centroids
-kMeans i k points threshold = kMeans' 1 (i k points) points threshold
+kMeans i k points threshold = runST $ do
+  steps     <- newSTRef 0
+  centroids <- newSTRef (i k points)
+  kMeans' steps centroids points threshold
+  nc <- readSTRef centroids
+  ns <- readSTRef steps
+  return (ns, nc)
 
 kMeans'
-  :: (Vector v, Vectorizable e v) => Int -> [v] -> [e] -> Double -> (Int, [v])
-kMeans' iteration centroids points threshold =
-  let assignments     = clusterAssignmentPhase centroids points
-      oldNewCentroids = newCentroidPhase assignments
-      newCentroids    = map snd oldNewCentroids
-  in  if shouldStop oldNewCentroids threshold
-        then (iteration, newCentroids)
-        else kMeans' (iteration + 1) newCentroids points threshold
+  :: (Num a, Vector v, Vectorizable e v)
+  => STRef s a
+  -> STRef s [v]
+  -> [e]
+  -> Double
+  -> ST s ()
+kMeans' iteration centroids points threshold = do
+  prevc <- readSTRef centroids
+  let assignments = clusterAssignmentPhase prevc points
+      newc        = map snd $ newCentroidPhase assignments
+  writeSTRef centroids newc
+  modifySTRef' iteration (+ 1)
+  let err = sum $ zipWith distance prevc newc
+  if err < threshold
+    then return ()
+    else kMeans' iteration centroids points threshold
 
 clusterAssignmentPhase
   :: (Ord v, Vector v, Vectorizable e v) => [v] -> [e] -> M.Map v [e]
