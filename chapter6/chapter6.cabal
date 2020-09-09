@@ -26,6 +26,8 @@ source-repository head
 
 library
   exposed-modules:
+      KMeans,
+      KMeansST,
       KMeansLenses,
       Lenses
   other-modules:
