@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleInstances #-}
 {-# LANGUAGE MultiParamTypeClasses #-}
 
-module KMeans where
+module KMeansST where
 
 import           Data.List
 import qualified Data.Map                      as M
