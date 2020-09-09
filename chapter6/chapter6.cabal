@@ -26,7 +26,7 @@ source-repository head
 
 library
   exposed-modules:
-      KMeans,
+      KMeansLenses,
       Lenses
   other-modules:
       Paths_chapter6

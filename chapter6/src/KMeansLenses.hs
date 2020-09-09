@@ -2,7 +2,7 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE TemplateHaskell #-}
 
-module KMeans where
+module KMeansLenses where
 
 import           Lens.Micro.Platform
 import           Data.List
