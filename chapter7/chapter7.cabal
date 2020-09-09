@@ -46,4 +46,6 @@ test-suite chapter7-test
   build-depends:
       base >=4.7 && <5
     , chapter7
+    , tasty-hunit
+    , tasty
   default-language: Haskell2010
