@@ -12,7 +12,7 @@ brokenThreeJumps = do
   return $ j1 + j2 + j3
 
 brokenJumps :: Int -> [Int]
-brokenJumps n = map sum $ replicateM n jumps
+brokenJumps = map sum . flip replicateM jumps
 
 find' :: (a -> Bool) -> [a] -> Maybe a
 find' p xs = msum $ map (\x -> if p x then Just x else Nothing) xs
