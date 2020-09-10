@@ -28,6 +28,7 @@ library
   exposed-modules:
       Lib
       , Apriori
+      , Graph
   other-modules:
       Paths_chapter7
   hs-source-dirs:
@@ -35,6 +36,7 @@ library
   build-depends:
       base >=4.7 && <5
       , containers
+      , logict
   default-language: Haskell2010
 
 test-suite chapter7-test
@@ -51,4 +53,5 @@ test-suite chapter7-test
     , tasty-hunit
     , tasty
     , containers
+    , logict
   default-language: Haskell2010

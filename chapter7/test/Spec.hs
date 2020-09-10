@@ -4,13 +4,15 @@ import           Lib
 import           Data.List                      ( find )
 import           Apriori
 import           Data.Set                       ( fromList )
+import Graph
+import Control.Monad.Logic
 
 main :: IO ()
 main = defaultMain testCases
 
 testCases :: TestTree
 testCases =
-  testGroup "Tests" [brokenJumpTest, findTest, clientToPurchaseInfoTest]
+  testGroup "Tests" [brokenJumpTest, findTest, clientToPurchaseInfoTest, pathsLTest]
 
 brokenJumpTest = testCase "broken jumps should be the same" $ do
   (brokenJumps 3) @?= brokenThreeJumps
@@ -28,3 +30,6 @@ clientToPurchaseInfoTest = testCase "test purchase info generation" $ do
           , InfoClientGender Male
           ]
         )
+
+pathsLTest = testCase "test pathsL with do notation" $ do
+    (observeMany 3 (pathsL graph2 2013 2558)) @?= (observeMany 3 (pathsL' graph2 2013 2558))
