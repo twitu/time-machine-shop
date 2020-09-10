@@ -27,12 +27,14 @@ source-repository head
 library
   exposed-modules:
       Lib
+      , Apriori
   other-modules:
       Paths_chapter7
   hs-source-dirs:
       src
   build-depends:
       base >=4.7 && <5
+      , containers
   default-language: Haskell2010
 
 test-suite chapter7-test
@@ -48,4 +50,5 @@ test-suite chapter7-test
     , chapter7
     , tasty-hunit
     , tasty
+    , containers
   default-language: Haskell2010
