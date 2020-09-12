@@ -31,3 +31,18 @@ pathsL' edges start end =
           )
       )
   in  if start == end then return [end] `mplus` e_paths else e_paths
+
+pathsLFair :: [(Int, Int)] -> Int -> Int -> Logic [Int]
+pathsLFair edges start end =
+  let
+    e_paths =
+      (   choices edges
+      >>- (\(e_start, e_end) ->
+            (guard $ e_start == start)
+              >>- (\_ ->
+                    pathsL edges e_end end
+                      >>- (\subpath -> return $ start : subpath)
+                  )
+          )
+      )
+  in  if start == end then return [end] `mplus` e_paths else e_paths
