@@ -24,15 +24,29 @@ source-repository head
   type: git
   location: https://github.com/twitu/chapter8
 
+executable chapter8
+  hs-source-dirs: app
+  main-is: Main.hs
+  build-depends:
+      base >=4.7 && <5
+    , monad-par
+    , deepseq
+    , chapter8
+  ghc-options: -Wall -threaded
+
 library
   exposed-modules:
       Lib
+    , Factors
   other-modules:
       Paths_chapter8
   hs-source-dirs:
       src
   build-depends:
       base >=4.7 && <5
+    , monad-par
+    , deepseq
+    , containers
   default-language: Haskell2010
 
 test-suite chapter8-test
