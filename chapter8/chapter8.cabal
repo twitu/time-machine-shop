@@ -38,6 +38,8 @@ library
   exposed-modules:
       Lib
     , Factors
+    , TimeTravel
+    , TimeTravelQueue
   other-modules:
       Paths_chapter8
   hs-source-dirs:
@@ -47,6 +49,10 @@ library
     , monad-par
     , deepseq
     , containers
+    , stm
+    , random
+    , stm-delay
+    , monad-loops
   default-language: Haskell2010
 
 test-suite chapter8-test
