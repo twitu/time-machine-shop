@@ -27,6 +27,8 @@ source-repository head
 library
   exposed-modules:
       Lib
+    , ClientSort
+    , WinATrip
   other-modules:
       Paths_chapter9
   hs-source-dirs:
