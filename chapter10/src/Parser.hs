@@ -11,7 +11,8 @@ import           Types                          ( Client
                                                 , Purchase(Purchase)
                                                 , Product(Product)
                                                 )
-import           Data.Attoparsec.Text           ( decimal
+import           Data.Attoparsec.Text           ( signed
+                                                , decimal
                                                 , char
                                                 , string
                                                 , double
@@ -22,32 +23,32 @@ import           Control.Applicative            ( Alternative((<|>)) )
 
 parsePerson :: Parser Person
 parsePerson =
-  (\f l -> Person f l)
+  Person
     <$  "Person("
-    <*> P.takeWhile (== ',')
+    <*> P.takeWhile (/= ',')
     <*  char ','
-    <*> P.takeWhile (== ')')
+    <*> P.takeWhile (/= ')')
     <*  char ')'
 
-parseClient :: Parser (Client Int)
+parseClient :: Parser (Client Integer)
 parseClient =
   GovOrg
     <$  "Client(gov,"
-    <*> decimal
+    <*> signed decimal
     <*  char ','
-    <*> P.takeWhile (== ')')
+    <*> P.takeWhile (/= ')')
     <|> Company
     <$  "Client(com,"
-    <*> decimal
+    <*> signed decimal
     <*  char ','
-    <*> P.takeWhile (== ',')
+    <*> P.takeWhile (/= ',')
     <*  char ','
     <*> parsePerson
     <*  char ','
-    <*> P.takeWhile (== ',')
+    <*> P.takeWhile (/= ',')
     <|> Individual
     <$  "Client(ind,"
-    <*> decimal
+    <*> signed decimal
     <*  char ','
     <*> parsePerson
 
@@ -55,13 +56,14 @@ parseProduct :: Parser Product
 parseProduct =
   Product
     <$  "Product("
-    <*> decimal
+    <*> signed decimal
     <*  char ','
-    <*> P.takeWhile (== ',')
+    <*> P.takeWhile (/= ',')
     <*  char ','
     <*> double
     <*  char ','
-    <*> P.takeWhile (== ',')
+    <*> P.takeWhile (/= ')')
+    <*  char ')'
 
 parsePurchase :: Parser Purchase
 parsePurchase =

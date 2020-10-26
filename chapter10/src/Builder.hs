@@ -36,7 +36,7 @@ productToText (Product pid pname price description) =
     <> B.fromText description
     <> B.singleton ')'
 
-clientToText :: Client Int -> B.Builder
+clientToText :: Client Integer -> B.Builder
 clientToText (GovOrg i n) =
   "Client(gov," <> B.decimal i <> B.singleton ',' <> B.fromText n <> B.singleton
     ')'

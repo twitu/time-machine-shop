@@ -39,6 +39,10 @@ library
     , conduit-extra
     , text
     , attoparsec
+    , aeson
+    , aeson-utils
+    , unordered-containers
+    , bytestring
   default-language: Haskell2010
 
 test-suite chapter10-test
@@ -52,5 +56,10 @@ test-suite chapter10-test
   build-depends:
       base >=4.7 && <5
     , chapter10
-    , tasty-h
+    , QuickCheck
+    , attoparsec
+    , hspec
+    , tasty
+    , tasty-quickcheck
+    , text
   default-language: Haskell2010
