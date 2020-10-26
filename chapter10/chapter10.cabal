@@ -43,6 +43,7 @@ library
     , aeson-utils
     , unordered-containers
     , bytestring
+    , transformers
   default-language: Haskell2010
 
 test-suite chapter10-test
