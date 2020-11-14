@@ -27,6 +27,7 @@ source-repository head
 library
   exposed-modules:
       Lib
+    , Offers
   other-modules:
       Paths_chapter13
   hs-source-dirs:
