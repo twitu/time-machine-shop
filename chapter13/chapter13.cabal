@@ -28,6 +28,8 @@ library
   exposed-modules:
       Lib
     , Offers
+    , OffersGadt
+    , Snack
   other-modules:
       Paths_chapter13
   hs-source-dirs:
