@@ -31,6 +31,7 @@ library
     , OffersGadt
     , Snack
     , Peano
+    , Product
   other-modules:
       Paths_chapter13
   hs-source-dirs:
