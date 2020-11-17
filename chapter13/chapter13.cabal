@@ -30,6 +30,7 @@ library
     , Offers
     , OffersGadt
     , Snack
+    , Peano
   other-modules:
       Paths_chapter13
   hs-source-dirs:
