@@ -1,0 +1,36 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.33.0.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: ce17c82636cf3185494ada90bd2a32b0f6839e1d5ffa96a06a5306e9849e3fb5
+
+name:           chapter14
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/twitu/chapter14#readme>
+homepage:       https://github.com/twitu/chapter14#readme
+bug-reports:    https://github.com/twitu/chapter14/issues
+author:         Ishan Bhanuka
+maintainer:     bhanuka.ishan@gmail.com
+copyright:      Ishan 2019
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/twitu/chapter14
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_chapter14
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+  default-language: Haskell2010
