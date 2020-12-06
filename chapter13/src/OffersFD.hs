@@ -7,6 +7,8 @@
 
 module OffersFD where
 
+import           ExprGadt                       ( Expr )
+
 data Zero
 data Succ n
 
@@ -35,5 +37,7 @@ data Offer a p where
   Both ::Plus p q r => Offer a p -> Offer a q -> Offer a r
   BetterOf ::Max p q r => Offer a p -> Offer a q -> Offer a r
   Restrict ::Min (Succ n) q r => Vect (Succ n) a -> Offer a q -> Offer a r
-  From ::Min p Zero r => a -> Offer a Zero
-  Until ::Max p Zero r => a -> Offer a Zero
+  From ::Integer -> Offer a p
+  Until ::Integer -> Offer a p
+  Extend ::Integer -> Offer a p
+  If ::Expr a Bool -> Offer a p -> Offer a p

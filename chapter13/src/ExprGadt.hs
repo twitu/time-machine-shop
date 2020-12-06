@@ -1,6 +1,6 @@
 {-# LANGUAGE GADTs #-}
 
-module OffersGadt where
+module ExprGadt where
 
 data Expr a r where
   AmountOf            ::a -> Expr a Integer
