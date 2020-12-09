@@ -46,4 +46,8 @@ test-suite chapter15-test
   build-depends:
       base >=4.7 && <5
     , chapter15
+    , tasty
+    , tasty-hunit
+    , tasty-quickcheck
+    , tasty-smallcheck
   default-language: Haskell2010
